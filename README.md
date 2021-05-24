@@ -78,13 +78,13 @@ python train_transformer.py --exp_name rstnet --batch_size 50 --m 40 --head 8 --
 ```
 
 <p align="center">
-  <img src="images/visualness.png" alt="Sample Results" width="700"/>
+  <img src="images/visualness.png" alt="Sample Results" width="680"/>
 </p>
 
 
 #### References
-[1] Cornia, M., Stefanini, M., Baraldi, L., & Cucchiara, R. (2020). Meshed-memory transformer for image captioning. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition.
-[2] Jiang, H., Misra, I., Rohrbach, M., Learned-Miller, E., & Chen, X. (2020). In defense of grid features for visual question answering. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition.  
+[1] Cornia, M., Stefanini, M., Baraldi, L., & Cucchiara, R. (2020). Meshed-memory transformer for image captioning. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition.  
+[2] Jiang, H., Misra, I., Rohrbach, M., Learned-Miller, E., & Chen, X. (2020). In defense of grid features for visual question answering. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition.   
 
 
 #### Acknowledgements
