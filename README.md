@@ -35,8 +35,7 @@ python feats_process.py
 ```
 
 ## Evaluation
-To reproduce the results reported in our paper,   
-download the pretrained model file [rstnet.pth]() and place it in the code folder.
+To reproduce the results reported in our paper, download the pretrained model file [rstnet.pth]() and place it in `saved_transformer_models` folder.
 
 Run `python test.py` using the following arguments:
 
