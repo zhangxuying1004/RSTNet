@@ -59,7 +59,7 @@ python train_transformer.py --exp_name rstnet --batch_size 50 --m 40 --head 8 --
 ```
 
 ## Evaluation
-Run `python test_transformer.py` to test rstnet or `python test_language.py` to test language model using the following arguments:
+Run `python test_transformer.py` to evaluate the rstnet or `python test_language.py` to evaluate the language model using the following arguments:
 
 | Argument | Possible values |
 |------|------|
