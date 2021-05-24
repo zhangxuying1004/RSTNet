@@ -24,8 +24,7 @@ Note: Python 3.6 is required to run our code.
 To run the code, annotations and detection features for the COCO dataset are needed.   
 Please download the annotations file [annotations.zip](https://drive.google.com/file/d/1i8mqKFKhqvBr8kEp3DbIh9-9UNAfKGmE/view?usp=sharing) and rename the extracted folder as m2_annotations.  
 
-Visual features are computed with the code provided by [2]. To reproduce our result, please download the COCO features file [x101-coco-features.hdf5](https://dl.fbaipublicfiles.com/grid-feats-vqa/X-101/X-101-features.tgz) and rename the extracted folder as X101-features.   
-Note that this visual features are huge, you can save the features as float16 for storage space saving by executing the following command:
+Visual features are computed with the code provided by [2]. To reproduce our result, please download the COCO features file [x101-coco-features.hdf5](https://dl.fbaipublicfiles.com/grid-feats-vqa/X-101/X-101-features.tgz) and rename the extracted folder as X101-features. Note that this visual features are huge, you can save the features as float16 for storage space saving by executing the following command:
 ```
 python switch_datatype.py
 ```
@@ -87,5 +86,5 @@ python train_transformer.py --exp_name rstnet --batch_size 50 --m 40 --head 8 --
 [2] Cornia, M., Stefanini, M., Baraldi, L., & Cucchiara, R. (2020). Meshed-memory transformer for image captioning. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition.
 
 #### Acknowledgements
-Thanks Cornia _et.al_ for their open source code [M2 transformer] [1](https://github.com/aimagelab/meshed-memory-transformer), on which our implements are based.  
-Thanks Jiang _et.al_ for the significant discovery in visual representation[2], which has given us a lot of inspiration.
+Thanks Cornia _et.al_ for their open source code [M2 transformer](https://github.com/aimagelab/meshed-memory-transformer), on which our implements are based.  
+Thanks Jiang _et.al_ for the significant discovery in visual representation [2], which has given us a lot of inspiration.
