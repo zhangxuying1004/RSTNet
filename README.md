@@ -24,7 +24,7 @@ Note: Python 3.6 is required to run our code.
 To run the code, annotations and detection features for the COCO dataset are needed.   
 Please download the annotations file [annotations.zip](https://drive.google.com/file/d/1i8mqKFKhqvBr8kEp3DbIh9-9UNAfKGmE/view?usp=sharing) and rename the extracted folder as m2_annotations.  
 
-Visual features are computed with the code provided by [1]. To reproduce our result, please download the COCO features file [x101-coco-features.hdf5](https://dl.fbaipublicfiles.com/grid-feats-vqa/X-101/X-101-features.tgz) and extract it. Note that this visual features are huge, you can use our `switch_datatype.py` to save the features as float16 for storage space saving. Besides, in order to solve the shape difference and match the feat shape with region feat shape (`50` regions), please run `feats_process.py` to reshape the visual to `49(7x7)` and save all visual features as a h5py file.    
+Visual features are computed with the code provided by [2]. To reproduce our result, please download the COCO features file [x101-coco-features.hdf5](https://dl.fbaipublicfiles.com/grid-feats-vqa/X-101/X-101-features.tgz) and extract it. Note that this visual features are huge, you can use our `switch_datatype.py` to save the features as float16 for storage space saving. Besides, in order to solve the shape difference and match the feat shape with region feat shape (`50` regions), please run `feats_process.py` to reshape the visual to `49(7x7)` and save all visual features as a h5py file.    
 
 ## Evaluation
 To reproduce the results reported in our paper,   
@@ -79,5 +79,5 @@ python train_transformer.py --exp_name rstnet --batch_size 50 --m 40 --head 8 --
 [2] Cornia, M., Stefanini, M., Baraldi, L., & Cucchiara, R. (2020). Meshed-memory transformer for image captioning. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition.
 
 #### Acknowledgements
-Thanks Cornia _et.al_ for their open source code [M2 transformer](https://github.com/aimagelab/meshed-memory-transformer), on which our implements are based.  
-Thanks Jiang _et.al_ for the significant discovery in visual representation, which has given us a lot of inspiration.
+Thanks Cornia _et.al_ for their open source code [M2 transformer][1](https://github.com/aimagelab/meshed-memory-transformer), on which our implements are based.  
+Thanks Jiang _et.al_ for the significant discovery in visual representation[2], which has given us a lot of inspiration.
