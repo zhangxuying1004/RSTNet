@@ -34,21 +34,6 @@ Besides, in order to solve the shape difference and match the feat shape with re
 python feats_process.py
 ```
 
-## Evaluation
-To reproduce the results reported in our paper, download the pretrained model file [rstnet.pth]() and place it in `saved_transformer_models` folder.
-
-Run `python test.py` using the following arguments:
-
-| Argument | Possible values |
-|------|------|
-| `--batch_size` | Batch size (default: 10) |
-| `--workers` | Number of workers (default: 0) |
-| `--features_path` | Path to detection features file |
-| `--annotation_folder` | Path to folder with COCO annotations |
-
-#### Expected output
-Under `output_logs/`, you may also find the expected output of the evaluation code.
-
 
 ## Training procedure
 Run `python train_language.py` and `python train_transformer.py` in sequence using the following arguments:
@@ -73,8 +58,25 @@ to train our rstnet model with the parameters used in our experiments, use
 python train_transformer.py --exp_name rstnet --batch_size 50 --m 40 --head 8 --features_path /path/to/features --annotation_folder /path/to/annotations
 ```
 
+## Evaluation
+Run `python test.py` using the following arguments:
+
+| Argument | Possible values |
+|------|------|
+| `--batch_size` | Batch size (default: 10) |
+| `--workers` | Number of workers (default: 0) |
+| `--features_path` | Path to visual features file (h5py) |
+| `--annotation_folder` | Path to m2_annotations |
+
+Note that, you can also download the pretrained model file [rstnet.pth]() and place it in `saved_transformer_models` folder o reproduce the our reported results.  
+
+
+#### Expected output
+Under `output_logs/`, you may also find the expected output of the evaluation code.
+
+
 <p align="center">
-  <img src="images/visualness.png" alt="Sample Results" width="680"/>
+  <img src="images/visualness.png" alt="Sample Results" width="670"/>
 </p>
 
 
