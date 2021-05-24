@@ -37,7 +37,7 @@ python feats_process.py
 
 ## Training procedure
 Run `python train_language.py` and `python train_transformer.py` in sequence using the following arguments:
-
+<div class="center">
 | Argument | Possible values |
 |------|------|
 | `--exp_name` | Experiment name|
@@ -48,7 +48,7 @@ Run `python train_language.py` and `python train_transformer.py` in sequence usi
 | `--resume_best` | If used, the training will be resumed from the best checkpoint. |
 | `--features_path` | Path to visual features file (h5py)|
 | `--annotation_folder` | Path to m2_annotations |
-
+</div>
 For example, to train our BERT-based language model with the parameters used in our experiments, use
 ```
 python train_language.py --exp_name bert_language --batch_size 50 --features_path /path/to/features --annotation_folder /path/to/annotations
