@@ -58,15 +58,12 @@ Run `python train_language.py` and `python train_transformer.py` in sequence usi
 |------|------|
 | `--exp_name` | Experiment name|
 | `--batch_size` | Batch size (default: 10) |
-| `--workers` | Number of workers (default: 0) |
-| `--m` | Number of memory vectors (default: 40) |
+| `--workers` | Number of workers, accelerate model training in the xe stage.|
 | `--head` | Number of heads (default: 8) |
-| `--warmup` | Warmup value for learning rate scheduling (default: 10000) |
 | `--resume_last` | If used, the training will be resumed from the last checkpoint. |
 | `--resume_best` | If used, the training will be resumed from the best checkpoint. |
-| `--features_path` | Path to detection features file |
-| `--annotation_folder` | Path to folder with COCO annotations |
-| `--logs_folder` | Path folder for tensorboard logs (default: "tensorboard_logs")|
+| `--features_path` | Path to visual features file (h5py)|
+| `--annotation_folder` | Path to m2_annotations |
 
 For example, to train our BERT-based language model with the parameters used in our experiments, use
 ```
