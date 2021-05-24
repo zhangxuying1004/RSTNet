@@ -25,7 +25,7 @@ To run the code, annotations and visual features for the COCO dataset are needed
 
 First, the annotations have been prepared by [1], please download these files [annotations.zip](https://drive.google.com/file/d/1i8mqKFKhqvBr8kEp3DbIh9-9UNAfKGmE/view?usp=sharing) and rename the extracted folder as m2_annotations.  
 
-Then, visual features are computed with the code provided by [2]. To reproduce our result, please download the COCO features file [x101-coco-features.hdf5](https://dl.fbaipublicfiles.com/grid-feats-vqa/X-101/X-101-features.tgz) and rename the extracted folder as X101-features. Note that this visual features are huge, you can save the features as float16 for storage space saving by executing the following command:
+Then, visual features are computed with the code provided by [2]. To reproduce our result, please download the COCO features file [X-101-features.tgz](https://dl.fbaipublicfiles.com/grid-feats-vqa/X-101/X-101-features.tgz) and rename the extracted folder as X101-features. Note that this visual features are huge, you can save the features as float16 for storage space saving by executing the following command:
 ```
 python switch_datatype.py
 ```
@@ -78,7 +78,7 @@ python train_transformer.py --exp_name rstnet --batch_size 50 --m 40 --head 8 --
 ```
 
 <p align="center">
-  <img src="images/visualness.png" alt="Sample Results" width="850"/>
+  <img src="images/visualness.png" alt="Sample Results" width="750"/>
 </p>
 
 
