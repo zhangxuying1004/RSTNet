@@ -21,10 +21,11 @@ Note: Python 3.6 is required to run our code.
 
 
 ## Data preparation
-To run the code, annotations and detection features for the COCO dataset are needed.   
-Please download the annotations file [annotations.zip](https://drive.google.com/file/d/1i8mqKFKhqvBr8kEp3DbIh9-9UNAfKGmE/view?usp=sharing) and rename the extracted folder as m2_annotations.  
+To run the code, annotations and visual features for the COCO dataset are needed.  
 
-Visual features are computed with the code provided by [2]. To reproduce our result, please download the COCO features file [x101-coco-features.hdf5](https://dl.fbaipublicfiles.com/grid-feats-vqa/X-101/X-101-features.tgz) and rename the extracted folder as X101-features. Note that this visual features are huge, you can save the features as float16 for storage space saving by executing the following command:
+First, the annotations have been prepared by [1], please download these files [annotations.zip](https://drive.google.com/file/d/1i8mqKFKhqvBr8kEp3DbIh9-9UNAfKGmE/view?usp=sharing) and rename the extracted folder as m2_annotations.  
+
+Then, visual features are computed with the code provided by [2]. To reproduce our result, please download the COCO features file [x101-coco-features.hdf5](https://dl.fbaipublicfiles.com/grid-feats-vqa/X-101/X-101-features.tgz) and rename the extracted folder as X101-features. Note that this visual features are huge, you can save the features as float16 for storage space saving by executing the following command:
 ```
 python switch_datatype.py
 ```
