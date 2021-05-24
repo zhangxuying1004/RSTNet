@@ -21,14 +21,14 @@ Note: Python 3.6 is required to run our code.
 
 
 ## Data preparation
-To run the code, annotations and detection features for the COCO dataset are needed. Please download the annotations file [annotations.zip](https://drive.google.com/file/d/1i8mqKFKhqvBr8kEp3DbIh9-9UNAfKGmE/view?usp=sharing) and extract it.
+To run the code, annotations and detection features for the COCO dataset are needed.   
+Please download the annotations file [annotations.zip](https://drive.google.com/file/d/1i8mqKFKhqvBr8kEp3DbIh9-9UNAfKGmE/view?usp=sharing) and rename the extracted folder as m2_annotations.  
 
-Detection features are computed with the code provided by [1]. To reproduce our result, please download the COCO features file [coco_x101_grid.hdf5](https://drive.google.com/open?id=1MV6dSnqViQfyvgyHrmAT_lLpFbkzp3mx), in which detections of each image are stored under the `<image_id>_features` key. `<image_id>` is the id of each COCO image, without leading zeros, and each value should be a `(N, 2048)` tensor, where `N` is the number of grids. 
-
+Visual features are computed with the code provided by [1]. To reproduce our result, please download the COCO features file [x101-coco-features.hdf5](https://dl.fbaipublicfiles.com/grid-feats-vqa/X-101/X-101-features.tgz) and extract it. Note that this visual features are huge, you can use our `switch_datatype.py` to save the features as float16 for storage space saving. Besides, in order to solve the shape difference and match the feat shape with region feat shape (50 regions), please run `feats_process.py` to reshape the visual to `49(7x7)` and save all visual features as a h5py file.    
 
 ## Evaluation
 To reproduce the results reported in our paper,   
-download the pretrained model file [rstnet.pth](https://drive.google.com/file/d/1naUSnVqXSMIdoiNz_fjqKwh9tXF7x8Nx/view?usp=sharing) and place it in the code folder.
+download the pretrained model file [rstnet.pth]() and place it in the code folder.
 
 Run `python test.py` using the following arguments:
 
@@ -44,7 +44,7 @@ Under `output_logs/`, you may also find the expected output of the evaluation co
 
 
 ## Training procedure
-Run `python train.py` using the following arguments:
+Run `python train_language.py` and `python train_transformer.py` in sequence using the following arguments:
 
 | Argument | Possible values |
 |------|------|
@@ -60,15 +60,24 @@ Run `python train.py` using the following arguments:
 | `--annotation_folder` | Path to folder with COCO annotations |
 | `--logs_folder` | Path folder for tensorboard logs (default: "tensorboard_logs")|
 
-For example, to train our rstnet model with the parameters used in our experiments, use
-```
-python train_transformer.py --exp_name rstnet --batch_size 50 --m 40 --head 8 --features_path /path/to/features --annotation_folder /path/to/annotations
-```
-to train our BERT-based language model with the parameters used in our experiments, use
+For example, to train our BERT-based language model with the parameters used in our experiments, use
 ```
 python train_language.py --exp_name bert_language --batch_size 50 --features_path /path/to/features --annotation_folder /path/to/annotations
+```
+to train our rstnet model with the parameters used in our experiments, use
+```
+python train_transformer.py --exp_name rstnet --batch_size 50 --m 40 --head 8 --features_path /path/to/features --annotation_folder /path/to/annotations
 ```
 
 <p align="center">
   <img src="images/visualness.png" alt="Sample Results" width="850"/>
 </p>
+
+
+#### References
+[1] Jiang, H., Misra, I., Rohrbach, M., Learned-Miller, E., & Chen, X. (2020). In defense of grid features for visual question answering. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (pp. 10267-10276).
+[2] Cornia, M., Stefanini, M., Baraldi, L., & Cucchiara, R. (2020). Meshed-memory transformer for image captioning. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (pp. 10578-10587).
+
+#### Acknowledgements
+Thanks Cornia _et.al_ for their open source code [M2 transformer](https://github.com/aimagelab/meshed-memory-transformer), on which our implements are based.
+Thanks Jiang _et.al_ for the significant discovery in visual representation, which has given us a lot of inspiration.
