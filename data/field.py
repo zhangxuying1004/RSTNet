@@ -107,7 +107,8 @@ class ImageDetectionsField(RawField):
         image_id = int(x.split('_')[-1].split('.')[0])
         try:
             f = h5py.File(self.detections_path, 'r')
-            precomp_data = f['%d_features' % image_id][()]
+#            precomp_data = f['%d_features' % image_id][()]
+            precomp_data = f['%d_grids' % image_id][()]
             if self.sort_by_prob:
                 precomp_data = precomp_data[np.argsort(np.max(f['%d_cls_prob' % image_id][()], -1))[::-1]]
         except KeyError:
