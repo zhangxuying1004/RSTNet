@@ -39,7 +39,7 @@ def get_feat_paths(dir_to_save_feats, data_split='trainval', test2014_info_path=
     ans = []
     if data_split == 'trainval':
         ans = os.listdir(os.path.join(dir_to_save_feats, 'train2014')) + os.listdir(os.path.join(dir_to_save_feats, 'val2014'))
-    else:
+    elif data_split == 'test':
         assert test2014_info_path is not None
         with open(test2014_info_path, 'r') as f:
             test2014_info = json.load(f)
@@ -50,6 +50,7 @@ def get_feat_paths(dir_to_save_feats, data_split='trainval', test2014_info_path=
             assert os.path.exists(feat_path)
             ans.append(feat_path)
         assert len(ans) == 40775
+    assert not ans      # make sure ans list is not empty
     return ans
     
 
