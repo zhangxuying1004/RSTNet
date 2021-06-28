@@ -185,13 +185,13 @@ if __name__ == '__main__':
     dataset = COCO(image_field, text_field, 'coco/images/', args.annotation_folder, args.annotation_folder)
     train_dataset, val_dataset, test_dataset = dataset.splits
 
-    if not os.path.isfile('vocab_transformer/vocab_%s.pkl' % args.exp_name):
+    if not os.path.isfile('vocab.pkl'):
         print("Building vocabulary")
         text_field.build_vocab(train_dataset, val_dataset, min_freq=5)
-        pickle.dump(text_field.vocab, open('vocab_transformer/vocab_%s.pkl' % args.exp_name, 'wb'))
+        pickle.dump(text_field.vocab, open('vocab.pkl', 'wb'))
     else:
         print('Loading from vocabulary')
-        text_field.vocab = pickle.load(open('vocab_transformer/vocab_%s.pkl' % args.exp_name, 'rb'))
+        text_field.vocab = pickle.load(open('vocab.pkl', 'rb'))
 
     # Model and dataloaders
     encoder = TransformerEncoder(3, 0, attention_module=ScaledDotProductAttention, attention_module_kwargs={'m': args.m})
@@ -242,7 +242,7 @@ if __name__ == '__main__':
     scheduler = LambdaLR(optim, lambda_lr)
 
     optim_rl = Adam(model.parameters(), lr=1, betas=(0.9, 0.98))
-    scheduler_rl = LambdaLR(optim, lambda_lr_rl)
+    scheduler_rl = LambdaLR(optim_rl, lambda_lr_rl)
 
     loss_fn = NLLLoss(ignore_index=text_field.vocab.stoi['<pad>'])
     use_rl = False
@@ -356,6 +356,9 @@ if __name__ == '__main__':
                 switch_to_rl = True
                 patience = 0
                 
+                optim_rl = Adam(model.parameters(), lr=1, betas=(0.9, 0.98))
+                scheduler_rl = LambdaLR(optim_rl, lambda_lr_rl)
+                
                 for k in range(e-1):
                     scheduler_rl.step()
 
@@ -369,6 +372,9 @@ if __name__ == '__main__':
                 use_rl = True
                 switch_to_rl = True
                 patience = 0
+                
+                optim_rl = Adam(model.parameters(), lr=1, betas=(0.9, 0.98))
+                scheduler_rl = LambdaLR(optim_rl, lambda_lr_rl)
 
                 for k in range(e-1):
                     scheduler_rl.step()
