@@ -58,8 +58,8 @@ def get_grids_pos(batch_size, seq_len, grid_size=(7, 7)):
     x = torch.arange(0, grid_size[0]).float().cuda()
     y = torch.arange(0, grid_size[1]).float().cuda()
 
-    px_min = x.view(-1, 1).expand(-1, grid_size[0]).view(-1)
-    py_min = y.view(1, -1).expand(grid_size[1], -1).view(-1)
+    px_min = x.view(-1, 1).expand(-1, grid_size[0]).contiguous().view(-1)
+    py_min = y.view(1, -1).expand(grid_size[1], -1).contiguous().view(-1)
 
     px_max = px_min + 1
     py_max = py_min + 1
