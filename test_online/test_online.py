@@ -89,8 +89,9 @@ if __name__ == '__main__':
             outputs.append(item)
 
     # 保存结果
-    with open('results/captions_test2014_RSTNet_results.json', 'w') as f:
+    output_path = 'results/captions_test2014_RSTNet_results.json'
+    # output_path = 'results/captions_val2014_RSTNet_results.json'
+    with open(output_path, 'w') as f:
         json.dump(outputs, f)
-    # with open('results/captions_val2014_RSTNet_results.json', 'w') as f:
-    #     json.dump(outputs, f)
+    
     print('finished!')
