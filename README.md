@@ -68,7 +68,7 @@ Run `python test_transformer.py` to evaluate the rstnet or `python test_language
 | `--features_path` | Path to visual features file (h5py) |
 | `--annotation_folder` | Path to m2_annotations |
 
-Note that, you can also download the pretrained model file [rstnet.pth]() and place it in `saved_transformer_models` folder o reproduce the our reported results.  
+Note that, you can also download the pretrained model file [rstnet.pth](https://drive.google.com/file/d/13Faz1NIjvwSqBofDo7yO94bgbEdFtKgE/view?usp=sharing) and place it in `saved_transformer_models` folder o reproduce the our reported results.  
 
 
 #### Expected output
