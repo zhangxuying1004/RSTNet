@@ -30,7 +30,7 @@ if __name__ == '__main__':
 
     # 测试集
     parser.add_argument('--features_path', type=str, default='/home/zhangxuying/DataSet/COCO/test_feats_X101.hdf5')
-    parser.add_argument('--annotation_folder', type=str, default='/home/DATA/m2_annotations/cocotest2014.json')
+    parser.add_argument('--annotation_folder', type=str, default='./cocotest2014.json')
     # # 验证集
     # parser.add_argument('--features_path', type=str, default='/home/DATA/X101_grid_feats_coco_trainval.hdf5')
     # parser.add_argument('--annotation_folder', type=str, default='/home/DATA/m2_annotations/captions_val2014.json')
