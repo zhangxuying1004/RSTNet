@@ -41,7 +41,8 @@ if __name__ == '__main__':
     print('Meshed-Memory Transformer Evaluation')
     text_field = TextField(init_token='<bos>', eos_token='<eos>', lower=True, tokenize='spacy',
                            remove_punctuation=True, nopoints=False)
-    text_field.vocab = pickle.load(open('../vocab_transformer/vocab_transformer_grid_adaptive9.pkl', 'rb'))
+    # text_field.vocab = pickle.load(open('../vocab_transformer/vocab_transformer_grid_adaptive9.pkl', 'rb'))
+    text_field.vocab = pickle.load(open('../vocab_transformer/vocab.pkl', 'rb'))
 
     dataset = COCO_Test(feat_path=args.features_path, ann_file=args.annotation_folder)
     dataloader = DataLoader(dataset, batch_size=args.batch_size, num_workers=args.workers)
