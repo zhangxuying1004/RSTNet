@@ -7,7 +7,7 @@ This repository contains the reference code for the paper [_RSTNet: Captioning w
 
 ## Tips
 Sometimes I may not be able to answer issues in time.  
-if you are in an emergency, you can add my wechat: zhangxuying1004 with the remark 'RSTNet'.  
+if you are in a hurry, you can add my wechat: zhangxuying1004 with the remark 'RSTNet'.  
 
 ## Environment setup
 Clone the repository and create the `m2release` conda environment using the `environment.yml` file:
