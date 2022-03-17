@@ -38,6 +38,7 @@ Besides, in order to solve the shape difference and match the feat shape with re
 python feats_process.py
 ```
 
+Note that you can also use my processed image features [COCO-X-101-grid.hdf5](https://pan.xunlei.com/s/VMyFV3OcrpOj7TdWkt5_amwiA1) with extraction code ```wsvg``` for convenience。
 
 ## Training procedure
 Run `python train_language.py` and `python train_transformer.py` in sequence using the following arguments:
