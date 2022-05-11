@@ -40,7 +40,7 @@ python feats_process.py
 
 Note that, you can also use my processed offline image features [COCO-X-101-grid.hdf5](https://pan.xunlei.com/s/VMyFV3OcrpOj7TdWkt5_amwiA1) with extraction code ```wsvg``` and my processed online image features [X101_grid_feats_coco_test.hdf5](https://pan.xunlei.com/s/VN-YFlVCAGDe_glAUaPkNOg2A1) with extraction code ```qzwm``` for convenience.  
 
-In addition, if you want to extract grid feature of your custom image dataset, you can refer to the code [grid-feats-vqa
+Besides, if you want to extract grid features of your custom image dataset, you can refer to the code [grid-feats-vqa
 ](https://github.com/facebookresearch/grid-feats-vqa).
 
 ## Training procedure
