@@ -2,7 +2,7 @@
 This repository contains the reference code for the paper [_RSTNet: Captioning with Adaptive Attention on Visual and Non-Visual Words_ (CVPR 2021)](https://openaccess.thecvf.com/content/CVPR2021/papers/Zhang_RSTNet_Captioning_With_Adaptive_Attention_on_Visual_and_Non-Visual_Words_CVPR_2021_paper.pdf).
 
 <p align="center">
-  <img src="images/RSTNet.png" alt="Relationship-Sensitive Transformer" width="850"/>
+  <img src="images/RSTNet.png" alt="Relationship-Sensitive Transformer" width="900"/>
 </p>
 
 ## Tips
@@ -62,6 +62,10 @@ to train our rstnet model with the parameters used in our experiments, use
 ```
 python train_transformer.py --exp_name rstnet --batch_size 50 --m 40 --head 8 --features_path /path/to/features --annotation_folder /path/to/annotations
 ```
+The figure below shows the changes of cider value during the training of rstnet. You can also visualize the training details by calling the tensorboard files in ```tensorboard_logs```.
+<p align="center">
+  <img src="images/train_cider.png" alt="cider changes" width="900"/>
+</p>
 
 ## Evaluation
 Run `python test_transformer.py` to evaluate the rstnet or `python test_language.py` to evaluate the language model using the following arguments:
@@ -75,21 +79,13 @@ Run `python test_transformer.py` to evaluate the rstnet or `python test_language
 
 Note that, you can also download the pretrained model file [rstnet.pth](https://drive.google.com/file/d/13Faz1NIjvwSqBofDo7yO94bgbEdFtKgE/view?usp=sharing) and place it in `saved_transformer_models` folder o reproduce the our reported results.  
 
-
-#### Expected output
-Under `output_logs/`, you may also find the expected output of the evaluation code.
-
-
-<p align="center">
-  <img src="images/visualness.png" alt="Sample Results" width="670"/>
-</p>
-
-
 #### References
 [1] Cornia, M., Stefanini, M., Baraldi, L., & Cucchiara, R. (2020). Meshed-memory transformer for image captioning. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition.  
 [2] Jiang, H., Misra, I., Rohrbach, M., Learned-Miller, E., & Chen, X. (2020). In defense of grid features for visual question answering. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition.   
 
 
 #### Acknowledgements
-Thanks Cornia _et.al_ for their open source code [M2 transformer](https://github.com/aimagelab/meshed-memory-transformer), on which our implements are based.  
-Thanks Jiang _et.al_ for the significant discovery in visual representation [2], which has given us a lot of inspiration.
+Thank Cornia _et.al_ for their open source code [meshed-memory-transformer
+](https://github.com/aimagelab/meshed-memory-transformer), on which our implements are based.  
+Thank Jiang _et.al_ for the significant discovery in visual representation [2] and their open source code [grid-feats-vqa
+](https://github.com/facebookresearch/grid-feats-vqa), which have given us a lot of inspiration.
