@@ -33,12 +33,15 @@ Then, visual features are computed with the code provided by [2]. To reproduce o
 ```
 python switch_datatype.py
 ```
-Besides, in order to solve the shape difference and match the feat shape with region feat shape (`50` regions), please execute the following command to reshape the visual to `49(7x7)` and save all visual features as a h5py file.
+Finally, in order to solve the shape difference and match the feat shape with region feat shape (`50` regions), please execute the following command to reshape the visual to `49(7x7)` and save all visual features as a h5py file.
 ```
 python feats_process.py
 ```
 
-Note that, you can also use my processed offline image features [COCO-X-101-grid.hdf5](https://pan.xunlei.com/s/VMyFV3OcrpOj7TdWkt5_amwiA1) with extraction code ```wsvg``` and my processed online image features [X101_grid_feats_coco_test.hdf5](https://pan.xunlei.com/s/VN-YFlVCAGDe_glAUaPkNOg2A1) with extraction code ```qzwm``` for convenience.
+Note that, you can also use my processed offline image features [COCO-X-101-grid.hdf5](https://pan.xunlei.com/s/VMyFV3OcrpOj7TdWkt5_amwiA1) with extraction code ```wsvg``` and my processed online image features [X101_grid_feats_coco_test.hdf5](https://pan.xunlei.com/s/VN-YFlVCAGDe_glAUaPkNOg2A1) with extraction code ```qzwm``` for convenience.  
+
+In addition, if you want to extract grid feature of your custom image dataset, you can refer to the code [grid-feats-vqa
+](https://github.com/facebookresearch/grid-feats-vqa).
 
 ## Training procedure
 Run `python train_language.py` and `python train_transformer.py` in sequence using the following arguments:
@@ -87,5 +90,4 @@ Note that, you can also download the pretrained model file [rstnet.pth](https://
 #### Acknowledgements
 Thank Cornia _et.al_ for their open source code [meshed-memory-transformer
 ](https://github.com/aimagelab/meshed-memory-transformer), on which our implements are based.  
-Thank Jiang _et.al_ for the significant discovery in visual representation [2] and their open source code [grid-feats-vqa
-](https://github.com/facebookresearch/grid-feats-vqa), which have given us a lot of inspiration.
+Thank Jiang _et.al_ for the significant discovery in visual representation [2], which has given us a lot of inspiration.
