@@ -2,7 +2,7 @@
 This repository contains the reference code for the paper [_RSTNet: Captioning with Adaptive Attention on Visual and Non-Visual Words_ (CVPR 2021)](https://openaccess.thecvf.com/content/CVPR2021/papers/Zhang_RSTNet_Captioning_With_Adaptive_Attention_on_Visual_and_Non-Visual_Words_CVPR_2021_paper.pdf).
 
 <p align="center">
-  <img src="images/RSTNet.png" alt="Relationship-Sensitive Transformer" width="900"/>
+  <img src="images/RSTNet.png" alt="Relationship-Sensitive Transformer" width="850"/>
 </p>
 
 ## Tips
@@ -64,7 +64,7 @@ python train_transformer.py --exp_name rstnet --batch_size 50 --m 40 --head 8 --
 ```
 The figure below shows the changes of cider value during the training of rstnet. You can also visualize the training details by calling the tensorboard files in ```tensorboard_logs```.
 <p align="center">
-  <img src="images/train_cider.png" alt="cider changes" width="900"/>
+  <img src="images/train_cider.png" alt="cider changes" width="850"/>
 </p>
 
 ## Evaluation
