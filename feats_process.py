@@ -18,27 +18,35 @@ class DataProcessor(nn.Module):
         return x.view(-1, x.size(-1))   # [h*w, d]
 
 
-def save_dataset(file_path, feat_paths): 
+def process_dataset(file_path, feat_paths): 
     print('save the ori grid features to the features with specified size')
+    # 加载特征处理器
     processor = DataProcessor()  
     with h5py.File(file_path, 'w') as f:
         for i in tqdm(range(len(feat_paths))):
+            # 加载特征
             feat_path = feat_paths[i]
-            img_name = feat_path.split('/')[-1]
-
-            img_feat = torch.load(feat_path)   
-            img_id = int(img_name.split('.')[0])
-
+            img_feat = torch.load(feat_path) 
+            # 处理特征
             img_feat = processor(img_feat)
+            # 保存特征
+            img_name = feat_path.split('/')[-1]
+            img_id = int(img_name.split('.')[0])
             f.create_dataset('%d_grids' % img_id, data=img_feat.numpy()) 
         f.close()
 
 
 def get_feat_paths(dir_to_save_feats, data_split='trainval', test2014_info_path=None):
-    print('get the paths of grid features')
+    print('get the paths of raw grid features')
     ans = []
+    # 线下训练和测试
     if data_split == 'trainval':
-        ans = os.listdir(os.path.join(dir_to_save_feats, 'train2014')) + os.listdir(os.path.join(dir_to_save_feats, 'val2014'))
+        filenames_train = os.listdir(os.path.join(dir_to_save_feats, 'train2014'))
+        ans_train = [os.path.join(dir_to_save_feats, 'train2014', filename) for filename in filenames_train]
+        filenames_val = os.listdir(os.path.join(dir_to_save_feats, 'val2014'))
+        ans_val = [os.path.join(dir_to_save_feats, 'val2014', filename) for filename in filenames_val]
+        ans = ans_train + ans_val
+    # 线上测试
     elif data_split == 'test':
         assert test2014_info_path is not None
         with open(test2014_info_path, 'r') as f:
@@ -55,18 +63,23 @@ def get_feat_paths(dir_to_save_feats, data_split='trainval', test2014_info_path=
     
 
 def main(args):
+    # 加载原始特征的绝对路径
     feat_paths = get_feat_paths(args.dir_to_save_feats, args.data_split, args.test2014_info_path)
+    # 构建处理后特征的文件名和保存路径
     file_path = os.path.join(args.dir_to_save_feats, 'X101_grid_feats_coco_'+args.data_split+'.hdf5')
-    save_dataset(file_path, feat_paths)
+    # 处理特征并保存
+    process_dataset(file_path, feat_paths)
     print('finished!')
 
 
 if __name__ == '__main__':
     
     parser = argparse.ArgumentParser(description='data process') 
-    parser.add_argument('--dir_to_save_feats', type=str, default='/zhangxuying/Dataset/coco/features/X101-features')
+    parser.add_argument('--dir_to_save_feats', type=str, default='X101-features/')
+    # trainval = train2014 + val2014，线下训练和测试，test = test2014，线上测试
     parser.add_argument('--data_split', type=str, default='trainval')   # trainval, test
-    parser.add_argument('--test2014_path', type=str, default=None)      # None, image_info_test2014.json
+    # test2015包含test2014，获取test2014时，先加载test2014索引再加载特征，image_info_test2014.json是保存test2014信息的文件
+    parser.add_argument('--test2014_info_path', type=str, default=None)      # None, image_info_test2014.json
     args = parser.parse_args()
         
     main(args)
