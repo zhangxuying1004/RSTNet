@@ -44,7 +44,7 @@ if __name__ == '__main__':
     start_time = time.time()
     device = torch.device('cuda')
 
-    parser = argparse.ArgumentParser(description='Transformer')
+    parser = argparse.ArgumentParser(description='RSTNet')
     parser.add_argument('--batch_size', type=int, default=10)
     parser.add_argument('--workers', type=int, default=4)
     parser.add_argument('--m', type=int, default=40)
@@ -58,7 +58,7 @@ if __name__ == '__main__':
     parser.add_argument('--vocab_path', type=str, default='./vocab.pkl')
     args = parser.parse_args()
 
-    print('Transformer Evaluation')
+    print('The Evaluation of RSTNet')
 
     # Pipeline for image regions
     image_field = ImageDetectionsField(detections_path=args.features_path, max_detections=49, load_in_tmp=False)
