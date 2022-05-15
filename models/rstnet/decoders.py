@@ -90,8 +90,8 @@ class TransformerDecoderLayer(Module):
         # 加载语言模型
         self.language_model = LanguageModel(padding_idx=padding_idx, bert_hidden_size=bert_hidden_size, vocab_size=vocab_size, max_len=max_len)
         assert language_model_path is not None
-        model_file = torch.load(language_model_path)
-        self.language_model.load_state_dict(model_file['state_dict'], strict=False)
+        language_model_file = torch.load(language_model_path)
+        self.language_model.load_state_dict(language_model_file['state_dict'], strict=False)
         for p in self.language_model.parameters():
             p.requires_grad = False
 
