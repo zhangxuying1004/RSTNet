@@ -149,7 +149,7 @@ def train_scst(model, dataloader, optim, cider, text_field):
 
 if __name__ == '__main__':
     device = torch.device('cuda')
-    parser = argparse.ArgumentParser(description='Transformer')
+    parser = argparse.ArgumentParser(description='RSTNet')
     parser.add_argument('--exp_name', type=str, default='rstnet')
     parser.add_argument('--batch_size', type=int, default=50)
     parser.add_argument('--workers', type=int, default=4)
@@ -173,7 +173,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
     print(args)
 
-    print('Transformer Training')
+    print('The Training of RSTNet')
     writer = SummaryWriter(log_dir=os.path.join(args.logs_folder, args.exp_name))
 
     # Pipeline for image regions
