@@ -80,7 +80,7 @@ Run `python test_transformer.py` to evaluate the rstnet or `python test_language
 | `--features_path` | Path to visual features file (h5py) |
 | `--annotation_folder` | Path to m2_annotations |
 
-Note that, you can also download the pretrained model file [rstnet.pth](https://drive.google.com/file/d/13Faz1NIjvwSqBofDo7yO94bgbEdFtKgE/view?usp=sharing) and place it in `saved_transformer_models` folder o reproduce the our reported results.  
+Note that, you can also download our pretrained model files in the ```Pre-trained_Models``` folder to reproduce the our reported results.  
 
 #### References
 [1] Cornia, M., Stefanini, M., Baraldi, L., & Cucchiara, R. (2020). Meshed-memory transformer for image captioning. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition.  
