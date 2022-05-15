@@ -80,7 +80,7 @@ Run `python test_transformer.py` to evaluate the rstnet or `python test_language
 | `--features_path` | Path to visual features file (h5py) |
 | `--annotation_folder` | Path to m2_annotations |
 
-Note that, you can also download our pretrained model files in the ```Pre-trained_Models``` folder to reproduce the our reported results. The results of offline evaluation are as follows：   
+Note that, you can also download our pretrained model files in the ```Pre-trained_Models``` folder to reproduce the our reported results. The results of offline evaluation (Karpathy test split of MS COCO) are as follows：   
 <p align="center">
   <img src="images/results.png" alt="offline evaluation" width="800"/>
 </p>
