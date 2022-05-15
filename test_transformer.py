@@ -53,8 +53,9 @@ if __name__ == '__main__':
     parser.add_argument('--annotation_folder', type=str, default='m2_annotations')
     
     # the path of tested model and vocabulary
-    parser.add_argument('--model_path', type=str, default='saved_transformer_models/rstnet_best.pth')
-    parser.add_argument('--vocab_path', type=str, default='vocab.pkl')
+    parser.add_argument('--language_model_path', type=str, default='./saved_language_models/language_context.pth')
+    parser.add_argument('--model_path', type=str, default='./saved_transformer_models/rstnet_best.pth')
+    parser.add_argument('--vocab_path', type=str, default='./vocab.pkl')
     args = parser.parse_args()
 
     print('Transformer Evaluation')
@@ -73,7 +74,7 @@ if __name__ == '__main__':
 
     # Model and dataloaders
     encoder = TransformerEncoder(3, 0, attention_module=ScaledDotProductAttention, attention_module_kwargs={'m': args.m})
-    decoder = TransformerDecoderLayer(len(text_field.vocab), 54, 3, text_field.vocab.stoi['<pad>'])
+    decoder = TransformerDecoderLayer(len(text_field.vocab), 54, 3, text_field.vocab.stoi['<pad>'], language_model_path=args.language_model_path)
     model = Transformer(text_field.vocab.stoi['<bos>'], encoder, decoder).to(device)
 
     data = torch.load(args.model_path)
