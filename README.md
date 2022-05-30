@@ -5,10 +5,6 @@ This repository contains the reference code for the paper [_RSTNet: Captioning w
   <img src="images/RSTNet.png" alt="Relationship-Sensitive Transformer" width="800"/>
 </p>
 
-## Tips
-Sometimes I may not be able to answer issues in time.  
-if you are in a hurry, you can add my wechat: zcclovelr with the remark 'RSTNet'.  
-
 ## Environment setup
 Clone the repository and create the `m2release` conda environment using the `environment.yml` file:
 ```
