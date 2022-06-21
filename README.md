@@ -21,7 +21,7 @@ Note: Python 3.6 is required to run our code.
 
 
 ## Data preparation
-To run the code, you need to put annotations, visual features and test2014_info for the COCO dataset into folder ```Datasets```.  
+To run our code, you need to put annotations, visual features and test2014_info for the COCO dataset into ```Datasets```.  
 
 First, most annotations have been prepared by [1], please download [annotations.zip](https://drive.google.com/file/d/1i8mqKFKhqvBr8kEp3DbIh9-9UNAfKGmE/view?usp=sharing) and rename the extracted folder as ```m2_annotations```.
 Then, please download [image_info_test2014.json](http://images.cocodataset.org/annotations/image_info_test2014.zip). 
