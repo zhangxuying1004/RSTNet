@@ -12,10 +12,9 @@ conda env create -f environment.yml
 conda activate m2release
 ```
 
-Then download spacy data by executing the command: ```python -m spacy download en```
+Then, download spacy data by executing the command: ```python -m spacy download en```.
 
-Note: Python 3.6 is required to run our code. 
-
+Besides, you need to create 3 folders, namely ```Datasets```, ```save_language_models``` and ```save_transformer_models``` in this root directory.
 
 ## Data preparation
 To run our code, you need to put annotations ```m2_annotations```, visual features ```X101-features``` and test2014_info ```image_info_test2014.json``` for the COCO dataset into ```Datasets```.  
