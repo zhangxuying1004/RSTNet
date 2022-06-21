@@ -138,6 +138,7 @@ if __name__ == '__main__':
         text_field.build_vocab(train_dataset, val_dataset, min_freq=5)
         pickle.dump(text_field.vocab, open('vocab.pkl', 'wb'))
     else:
+        print('Loading from vocabulary')
         text_field.vocab = pickle.load(open('vocab.pkl', 'rb'))
 
     model = LanguageModel(padding_idx=text_field.vocab.stoi['<pad>'], bert_hidden_size=768, vocab_size=len(text_field.vocab)).to(device)
