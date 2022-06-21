@@ -110,10 +110,11 @@ if __name__ == '__main__':
     parser.add_argument('--resume_last', action='store_true')
     parser.add_argument('--resume_best', action='store_true')
 
-    parser.add_argument('--features_path', type=str, default='X101-grid-coco_trainval.hdf5')
-    parser.add_argument('--annotation_folder', type=str, default='m2_annotations')
+    parser.add_argument('--features_path', type=str, default='./Datasets/X101-features/X101-grid-coco_trainval.hdf5')
+    parser.add_argument('--annotation_folder', type=str, default='./Datasets/m2_annotations')
+    parser.add_argument('--dir_to_save_model', type=str, default='./saved_language_models')
 
-    parser.add_argument('--logs_folder', type=str, default='language_tensorboard_logs')
+    parser.add_argument('--logs_folder', type=str, default='./language_tensorboard_logs')
     args = parser.parse_args()
     print(args)
 
@@ -131,12 +132,12 @@ if __name__ == '__main__':
     dataset = COCO(image_field, text_field, 'coco/images/', args.annotation_folder, args.annotation_folder)
     train_dataset, val_dataset, test_dataset = dataset.splits
 
-    if not os.path.isfile('vocab_language/vocab_%s.pkl' % args.exp_name):
+    if not os.path.isfile('vocab.pkl'):
         print("Building vocabulary")
         text_field.build_vocab(train_dataset, val_dataset, min_freq=5)
-        pickle.dump(text_field.vocab, open('vocab_language/vocab_%s.pkl' % args.exp_name, 'wb'))
+        pickle.dump(text_field.vocab, open('vocab.pkl', 'wb'))
     else:
-        text_field.vocab = pickle.load(open('vocab_language/vocab_%s.pkl' % args.exp_name, 'rb'))
+        text_field.vocab = pickle.load(open('vocab.pkl', 'rb'))
 
     model = LanguageModel(padding_idx=text_field.vocab.stoi['<pad>'], bert_hidden_size=768, vocab_size=len(text_field.vocab)).to(device)
 
@@ -172,9 +173,9 @@ if __name__ == '__main__':
 
     if args.resume_last or args.resume_best:
         if args.resume_last:
-            fname = 'saved_language_models/%s_last.pth' % args.exp_name
+            fname = os.path.join(args.dir_to_save_model, '%s_last.pth' % args.exp_name)
         else:
-            fname = 'saved_language_models/%s_best.pth' % args.exp_name
+            fname = os.path.join(args.dir_to_save_model, '%s_best.pth' % args.exp_name)
 
         if os.path.exists(fname):
             data = torch.load(fname)
@@ -253,7 +254,7 @@ if __name__ == '__main__':
                 exit_train = True
 
         if switch_to_rl and not best:
-            data = torch.load('saved_language_models/%s_best.pth' % args.exp_name)
+            data = torch.load(os.path.join(args.dir_to_save_model, '%s_best.pth' % args.exp_name))
             torch.set_rng_state(data['torch_rng_state'])
             torch.cuda.set_rng_state(data['cuda_rng_state'])
             np.random.set_state(data['numpy_rng_state'])
@@ -276,12 +277,12 @@ if __name__ == '__main__':
             'patience': patience,
             'best_score': best_score,
             'use_rl': use_rl,
-        }, 'saved_language_models/%s_last.pth' % args.exp_name)
+        }, os.path.join(args.dir_to_save_model, '%s_last.pth' % args.exp_name))
 
         if best:
-            copyfile('saved_language_models/%s_last.pth' % args.exp_name, 'saved_language_models/%s_best.pth' % args.exp_name)
+            copyfile(os.path.join(args.dir_to_save_model, '%s_last.pth' % args.exp_name), os.path.join(args.dir_to_save_model, '%s_best.pth' % args.exp_name))
         if best_test:
-            copyfile('saved_language_models/%s_last.pth' % args.exp_name, 'saved_language_models/%s_best_test.pth' % args.exp_name)
+            copyfile(os.path.join(args.dir_to_save_model, '%s_last.pth' % args.exp_name), os.path.join(args.dir_to_save_model, '%s_best_test.pth' % args.exp_name))
 
         if exit_train:
             writer.close()
