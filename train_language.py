@@ -120,6 +120,11 @@ if __name__ == '__main__':
     print(args)
 
     print('Bert Language Model Training')
+    # preparation
+    if not os.path.exists(args.dir_to_save_model):
+        os.makedirs(args.dir_to_save_model)
+    if not os.path.exists(args.logs_folder):
+        os.makedirs(args.logs_folder)
     writer = SummaryWriter(log_dir=os.path.join(args.logs_folder, args.exp_name))
 
     # Pipeline for image regions
