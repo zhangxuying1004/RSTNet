@@ -163,7 +163,7 @@ if __name__ == '__main__':
     parser.add_argument('--annotation_folder', type=str, default='Datasets/m2_annotations/')
 
     parser.add_argument('--dir_to_save_model', type=str, default='./saved_transformer_models/')
-    parser.add_argument('--logs_folder', type=str, default='./tensorboard_logs')
+    parser.add_argument('--logs_folder', type=str, default='./transformer_tensorboard_logs')
     
     parser.add_argument('--xe_least', type=int, default=15)
     parser.add_argument('--xe_most', type=int, default=20)
