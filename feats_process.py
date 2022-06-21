@@ -79,7 +79,7 @@ if __name__ == '__main__':
     # trainval = train2014 + val2014，用于训练和线下测试，test = test2014，用于线上测试
     parser.add_argument('--data_split', type=str, default='trainval')   # trainval, test
     # test2015包含test2014，获取test2014时，先加载test2014索引再加载特征，image_info_test2014.json是保存test2014信息的文件
-    parser.add_argument('--test2014_info_path', type=str, default=None)      # None, image_info_test2014.json
+    parser.add_argument('--test2014_info_path', type=str, default='./datasets/image_info_test2014.json') 
     args = parser.parse_args()
         
     main(args)
