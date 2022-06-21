@@ -12,7 +12,8 @@ conda env create -f environment.yml
 conda activate m2release
 ```
 
-Then, download spacy data by executing the command: ```python -m spacy download en``` or ```python -m spacy download en_core_web_sm```.
+Then, download spacy data by executing the following command:   
+```python -m spacy download en``` or ```python -m spacy download en_core_web_sm```.
 
 Besides, you need to create 3 new folders, namely ```Datasets```, ```save_language_models``` and ```save_transformer_models``` in the root directory of this project.
 
