@@ -1,5 +1,5 @@
 # RSTNet: Relationship-Sensitive Transformer Network
-This repository contains the reference code for the paper [_RSTNet: Captioning with Adaptive Attention on Visual and Non-Visual Words_ (CVPR 2021)](https://openaccess.thecvf.com/content/CVPR2021/papers/Zhang_RSTNet_Captioning_With_Adaptive_Attention_on_Visual_and_Non-Visual_Words_CVPR_2021_paper.pdf).
+This repository contains the reference code for our paper [_RSTNet: Captioning with Adaptive Attention on Visual and Non-Visual Words_ (CVPR 2021)](https://openaccess.thecvf.com/content/CVPR2021/papers/Zhang_RSTNet_Captioning_With_Adaptive_Attention_on_Visual_and_Non-Visual_Words_CVPR_2021_paper.pdf).
 
 <p align="center">
   <img src="images/RSTNet.png" alt="Relationship-Sensitive Transformer" width="800"/>
