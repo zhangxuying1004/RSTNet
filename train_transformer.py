@@ -418,7 +418,7 @@ if __name__ == '__main__':
 
         # 保存模型，用于微调
         if e >= 25:
-            copyfile(os.path.join(args.dir_to_save_model, '%s_last.pth' % args.exp_name), os.path.join(args.dir_to_save_model, '{}_{}.pth'.format(args.exp_name, e))
+            copyfile(os.path.join(args.dir_to_save_model, '%s_last.pth' % args.exp_name), os.path.join(args.dir_to_save_model, '{}_{}.pth'.format(args.exp_name, e)))
 
         if exit_train:
             writer.close()
