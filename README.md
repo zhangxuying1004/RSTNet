@@ -14,7 +14,7 @@ conda activate m2release
 
 Then, download spacy data by executing the command: ```python -m spacy download en``` or ```python -m spacy download en_core_web_sm```.
 
-Besides, you need to create 3 new folders, namely ```Datasets```, ```save_language_models``` and ```save_transformer_models``` in this root directory.
+Besides, you need to create 3 new folders, namely ```Datasets```, ```save_language_models``` and ```save_transformer_models``` in the root directory of this project.
 
 ## Data preparation
 To run our code, you need to put annotations ```m2_annotations```, visual features ```X101-features``` and test2014_info ```image_info_test2014.json``` for the COCO dataset into ```Datasets```.  
