@@ -33,8 +33,8 @@ def main(args):
 if __name__ == '__main__':
     
     parser = argparse.ArgumentParser(description='swith the data type of features') 
-    parser.add_argument('--dir_to_processed_feats', type=str, default='./Datasets/X101-features/', help='big data')
-    parser.add_argument('--dir_to_save_float16_feats', type=str, default='./Datasets/X101-features-float16', help='little data')
+    parser.add_argument('--dir_to_raw_feats', type=str, default='./Datasets/X101-features/', help='big data')
+    parser.add_argument('--dir_to_float16_feats', type=str, default='./Datasets/X101-features-float16', help='little data')
     args = parser.parse_args()
         
     main(args)
