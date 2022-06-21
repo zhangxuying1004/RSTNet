@@ -64,9 +64,9 @@ def get_feat_paths(dir_to_save_feats, data_split='trainval', test2014_info_path=
 
 def main(args):
     # 加载原始特征的绝对路径
-    feat_paths = get_feat_paths(args.dir_to_save_feats, args.data_split, args.test2014_info_path)
+    feat_paths = get_feat_paths(args.dir_to_raw_feats, args.data_split, args.test2014_info_path)
     # 构建处理后特征的文件名和保存路径
-    file_path = os.path.join(args.dir_to_save_feats, 'X101_grid_feats_coco_'+args.data_split+'.hdf5')
+    file_path = os.path.join(args.dir_to_processed_feats, 'X101_grid_feats_coco_'+args.data_split+'.hdf5')
     # 处理特征并保存
     process_dataset(file_path, feat_paths)
     print('finished!')
@@ -75,11 +75,12 @@ def main(args):
 if __name__ == '__main__':
     
     parser = argparse.ArgumentParser(description='data process') 
-    parser.add_argument('--dir_to_save_feats', type=str, default='./datasets/X101-features/')
+    parser.add_argument('--dir_to_raw_feats', type=str, default='./Datasets/X101-features/')
+    parser.add_argument('--dir_to_processed_feats', type=str, default='./Datasets/X101-features/')
     # trainval = train2014 + val2014，用于训练和线下测试，test = test2014，用于线上测试
     parser.add_argument('--data_split', type=str, default='trainval')   # trainval, test
     # test2015包含test2014，获取test2014时，先加载test2014索引再加载特征，image_info_test2014.json是保存test2014信息的文件
-    parser.add_argument('--test2014_info_path', type=str, default='./datasets/image_info_test2014.json') 
+    parser.add_argument('--test2014_info_path', type=str, default='./Datasets/image_info_test2014.json') 
     args = parser.parse_args()
         
     main(args)
