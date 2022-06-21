@@ -79,8 +79,8 @@ if __name__ == '__main__':
     parser.add_argument('--exp_name', type=str, default='bert_language1')
     parser.add_argument('--batch_size', type=int, default=50)
     parser.add_argument('--workers', type=int, default=4)
-    parser.add_argument('--features_path', type=str, default='X101-grid-coco_trainval.hdf5')
-    parser.add_argument('--annotation_folder', type=str, default='m2_annotations')
+    parser.add_argument('--features_path', type=str, default='./Datasets/X101-features/X101-grid-coco_trainval.hdf5')
+    parser.add_argument('--annotation_folder', type=str, default='./Datasets/m2_annotations')
 
     args = parser.parse_args()
     print(args)
