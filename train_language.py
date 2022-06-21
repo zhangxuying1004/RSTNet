@@ -112,9 +112,10 @@ if __name__ == '__main__':
 
     parser.add_argument('--features_path', type=str, default='./Datasets/X101-features/X101-grid-coco_trainval.hdf5')
     parser.add_argument('--annotation_folder', type=str, default='./Datasets/m2_annotations')
+    
     parser.add_argument('--dir_to_save_model', type=str, default='./saved_language_models')
-
     parser.add_argument('--logs_folder', type=str, default='./language_tensorboard_logs')
+    
     args = parser.parse_args()
     print(args)
 
