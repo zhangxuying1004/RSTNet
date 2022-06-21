@@ -162,7 +162,9 @@ if __name__ == '__main__':
     parser.add_argument('--features_path', type=str, default='/home/DATA/X101_grid_feats_coco_trainval.hdf5')
     parser.add_argument('--annotation_folder', type=str, default='/home/DATA/m2_annotations')
 
+    parser.add_argument('--dir_to_save_model', type=str, default='./saved_transformer_models')
     parser.add_argument('--logs_folder', type=str, default='tensorboard_logs')
+    
     parser.add_argument('--xe_least', type=int, default=15)
     parser.add_argument('--xe_most', type=int, default=20)
     parser.add_argument('--refine_epoch_rl', type=int, default=28)
@@ -253,9 +255,9 @@ if __name__ == '__main__':
 
     if args.resume_last or args.resume_best:
         if args.resume_last:
-            fname = 'saved_transformer_models/%s_last.pth' % args.exp_name
+            fname = os.path.join(args.dir_to_save_model, '%s_last.pth' % args.exp_name)
         else:
-            fname = 'saved_transformer_models/%s_best.pth' % args.exp_name
+            fname = os.path.join(args.dir_to_save_model, '%s_best.pth' % args.exp_name)
 
         if os.path.exists(fname):
             data = torch.load(fname)
@@ -382,7 +384,7 @@ if __name__ == '__main__':
                 print("Switching to RL")
 
         if switch_to_rl and not best:
-            data = torch.load('saved_transformer_models/%s_best.pth' % args.exp_name)
+            data = torch.load(os.path.join(args.dir_to_save_model, '%s_best.pth' % args.exp_name))
             torch.set_rng_state(data['torch_rng_state'])
             torch.cuda.set_rng_state(data['cuda_rng_state'])
             np.random.set_state(data['numpy_rng_state'])
@@ -406,16 +408,17 @@ if __name__ == '__main__':
             'best_cider': best_cider,
             'best_test_cider': best_test_cider,
             'use_rl': use_rl,
-        }, 'saved_transformer_models/%s_last.pth' % args.exp_name)
-
+        }, os.path.join(args.dir_to_save_model, '%s_last.pth' % args.exp_name))
+        
         if best:
-            copyfile('saved_transformer_models/%s_last.pth' % args.exp_name, 'saved_transformer_models/%s_best.pth' % args.exp_name)
+            copyfile(os.path.join(args.dir_to_save_model, '%s_last.pth' % args.exp_name), os.path.join(args.dir_to_save_model, '%s_best.pth' % args.exp_name))
         if best_test:
-            copyfile('saved_transformer_models/%s_last.pth' % args.exp_name, 'saved_transformer_models/%s_best_test.pth' % args.exp_name)
+            copyfile(os.path.join(args.dir_to_save_model, '%s_last.pth' % args.exp_name), os.path.join(args.dir_to_save_model, '%s_best_test.pth' % args.exp_name))
+
 
         # 保存模型，用于微调
         if e >= 25:
-            copyfile('saved_transformer_models/%s_last.pth' % args.exp_name, 'saved_transformer_models/{}_{}.pth'.format(args.exp_name, e))
+            copyfile(os.path.join(args.dir_to_save_model, '%s_last.pth' % args.exp_name), os.path.join(args.dir_to_save_model, '{}_{}.pth'.format(args.exp_name, e))
 
         if exit_train:
             writer.close()
