@@ -12,10 +12,7 @@ conda env create -f environment.yml
 conda activate m2release
 ```
 
-Then download spacy data by executing the following command:
-```
-python -m spacy download en
-```
+Then download spacy data by executing the command: ```python -m spacy download en```
 
 Note: Python 3.6 is required to run our code. 
 
