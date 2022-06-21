@@ -39,13 +39,14 @@ def process_dataset(file_path, feat_paths):
 def get_feat_paths(dir_to_save_feats, data_split='trainval', test2014_info_path=None):
     print('get the paths of raw grid features')
     ans = []
-    # 线下训练和测试
+    # 模型训练和线下测试
     if data_split == 'trainval':
         filenames_train = os.listdir(os.path.join(dir_to_save_feats, 'train2014'))
         ans_train = [os.path.join(dir_to_save_feats, 'train2014', filename) for filename in filenames_train]
         filenames_val = os.listdir(os.path.join(dir_to_save_feats, 'val2014'))
         ans_val = [os.path.join(dir_to_save_feats, 'val2014', filename) for filename in filenames_val]
         ans = ans_train + ans_val
+        assert len(ans) == 163791
     # 线上测试
     elif data_split == 'test':
         assert test2014_info_path is not None
@@ -75,12 +76,13 @@ def main(args):
 if __name__ == '__main__':
     
     parser = argparse.ArgumentParser(description='data process') 
-    parser.add_argument('--dir_to_save_feats', type=str, default='X101-features/')
+    # 原始特征
+    parser.add_argument('--dir_to_save_feats', type=str, default='./dataset/X101-features/')
     # trainval = train2014 + val2014，线下训练和测试，test = test2014，线上测试
     parser.add_argument('--data_split', type=str, default='trainval')   # trainval, test
     # test2015包含test2014，获取test2014时，先加载test2014索引再加载特征，image_info_test2014.json是保存test2014信息的文件
-    parser.add_argument('--test2014_info_path', type=str, default=None)      # None, image_info_test2014.json
+    parser.add_argument('--test2014_info_path', type=str, default='./dataset/image_info_test2014.json')  
+    
     args = parser.parse_args()
-        
     main(args)
 
