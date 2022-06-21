@@ -23,10 +23,11 @@ Note: Python 3.6 is required to run our code.
 ## Data preparation
 To run our code, you need to put annotations, visual features and test2014_info for the COCO dataset into ```Datasets```.  
 
-First, most annotations have been prepared by [1], please download [annotations.zip](https://drive.google.com/file/d/1i8mqKFKhqvBr8kEp3DbIh9-9UNAfKGmE/view?usp=sharing) and rename the extracted folder as ```m2_annotations```.
+First, most annotations have been prepared by [1], please download [annotations.zip](https://drive.google.com/file/d/1i8mqKFKhqvBr8kEp3DbIh9-9UNAfKGmE/view?usp=sharing) and rename the extracted folder as ```m2_annotations```.  
+
 Then, please download [image_info_test2014.json](http://images.cocodataset.org/annotations/image_info_test2014.zip). 
 
-Nest, visual features are computed with the code provided by [2]. To reproduce our result, please download the COCO features file [X-101-features.tgz](https://dl.fbaipublicfiles.com/grid-feats-vqa/X-101/X-101-features.tgz) and rename the extracted folder as ```X101-features```. Note that this visual features are huge, you can alternatively save the features as float16 for storage space saving by executing the following command:
+Next, visual features are computed with the code provided by [2]. To reproduce our result, please download the COCO features file [X-101-features.tgz](https://dl.fbaipublicfiles.com/grid-feats-vqa/X-101/X-101-features.tgz) and rename the extracted folder as ```X101-features```. Note that this visual features are huge, you can alternatively save the features as float16 for storage space saving by executing the following command:
 ```
 python switch_datatype.py
 ```
