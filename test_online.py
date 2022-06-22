@@ -1,4 +1,6 @@
 # 线上测试：evaluating the performance of captioning model on official MS-COCO test server.
+# 此处生成指定格式的官方测试集和验证集对应的captions文件，将这两个文件压缩后上传到[CodaLab](https://competitions.codalab.org/competitions/3221#participate)即可得到
+# 线上测试的结果和排名
 
 import torch
 import argparse
@@ -65,7 +67,7 @@ if __name__ == '__main__':
     parser.add_argument('--datasplit', type=str, default='test')    # test, val
 
     # 测试集
-    parser.add_argument('--test_features_path', type=str, default='./datasets/X101-features/test_feats_X101.hdf5')
+    parser.add_argument('--test_features_path', type=str, default='./datasets/X101-features/X101_grid_feats_coco_test.hdf5')
     parser.add_argument('--test_annotation_folder', type=str, default='./datasets/m2_annotations/captions_test2014.json')
     
     # 验证集
