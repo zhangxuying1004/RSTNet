@@ -1,3 +1,5 @@
+# 线上测试：evaluating the performance of captioning model on official MS-COCO test server.
+
 import torch
 import argparse
 import pickle
