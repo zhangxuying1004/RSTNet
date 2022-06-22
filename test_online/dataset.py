@@ -36,3 +36,4 @@ class COCO_TestOnline(Dataset):
             precomp_data = precomp_data[:self.max_detections]
 
         return int(image_id), precomp_data
+   
