@@ -8,11 +8,7 @@ import os
 
 from tqdm import tqdm
 
-from dataset import COCO_TestOnline
-
-import sys
-sys.path.append('../')
-from data import TextField
+from data import TextField, COCO_TestOnline
 from models.rstnet import Transformer, TransformerEncoder, TransformerDecoderLayer, ScaledDotProductAttention, TransformerEnsemble
 
 import random
@@ -74,13 +70,13 @@ if __name__ == '__main__':
 
     # 模型参数
     parser.add_argument('--models_path', type=list, default=[
-        '../test_online_models/x101/rstnet_x101_1.pth',
-        '../test_online_models/x101/rstnet_x101_2.pth',
-        '../test_online_models/x101/rstnet_x101_3.pth',
-        '../test_online_models/x101/rstnet_x101_4.pth'
+        './test_online/models/rstnet_x101_1.pth',
+        './test_online/models/rstnet_x101_2.pth',
+        './test_online/models/rstnet_x101_3.pth',
+        './test_online/models/rstnet_x101_4.pth'
     ])
 
-    parser.add_argument('--dir_to_save_caps', type=str, default='./results/')    # 文件保存路径
+    parser.add_argument('--dir_to_save_caps', type=str, default='./test_online/results/')    # 文件保存路径
 
     args = parser.parse_args()
 
