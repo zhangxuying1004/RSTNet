@@ -44,6 +44,8 @@ def gen_caps(captioning_model, dataset, batch_size=10, workers=0):
 
 
 def save_results(outputs, datasplit, dir_to_save_caps):
+    if not os.path.exists(dir_to_save_caps):
+        os.makedirs(dir_to_save_caps)
     #  命名规范：captions_test2014_XXX_results.json 和 captions_val2014_XXX_results.json
     output_path = os.path.join(dir_to_save_caps, 'captions_' + datasplit + '2014_RSTNet_results.json')
     with open(output_path, 'w') as f:
@@ -85,7 +87,7 @@ if __name__ == '__main__':
     # 加载数据集
     text_field = TextField(init_token='<bos>', eos_token='<eos>', lower=True, tokenize='spacy',
                            remove_punctuation=True, nopoints=False)
-    text_field.vocab = pickle.load(open('../vocab.pkl', 'rb'))
+    text_field.vocab = pickle.load(open('./vocab.pkl', 'rb'))
     
     if args.datasplit == 'test':
         dataset = COCO_TestOnline(feat_path=args.test_features_path, ann_file=args.test_annotation_folder)
