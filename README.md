@@ -20,7 +20,7 @@ Besides, you need to create 5 new folders, namely ```Datasets```, ```save_langua
 ## Data preparation
 To run our code, you need to put annotations ```m2_annotations```, visual features ```X101-features``` and test2014_info ```image_info_test2014.json``` for the COCO dataset into ```Datasets```.  
 
-First, most annotations have been prepared by [1], please download [annotations.zip](https://drive.google.com/file/d/1i8mqKFKhqvBr8kEp3DbIh9-9UNAfKGmE/view?usp=sharing) and rename the extracted folder as ```m2_annotations```.  
+First, most annotations have been prepared by [1], please download the files in [m2_annotations](https://drive.google.com/drive/folders/1tJnetunBkQ4Y5A3pq2P53yeJuGa4lX9e?usp=sharing) and put them into ```m2_annotations```.  
 
 Then, please download [image_info_test2014.zip](http://images.cocodataset.org/annotations/image_info_test2014.zip) and decompress to ```image_info_test2014.json```. 
 
