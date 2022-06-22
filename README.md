@@ -64,7 +64,7 @@ The figure below shows the changes of cider value during the training of rstnet.
 </p>
 
 ## Evaluation
-Run `python test_transformer.py` to evaluate the rstnet or `python test_language.py` to evaluate the language model using the following arguments:
+Run `python test_offline.py`  or `python test_online/main.py` to evaluate the performance of rstnet using the following arguments:
 
 | Argument | Possible values |
 |------|------|
