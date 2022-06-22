@@ -68,7 +68,7 @@ if __name__ == '__main__':
 
     # 测试集
     parser.add_argument('--test_features_path', type=str, default='./datasets/X101-features/X101_grid_feats_coco_test.hdf5')
-    parser.add_argument('--test_annotation_folder', type=str, default='./datasets/m2_annotations/captions_test2014.json')
+    parser.add_argument('--test_annotation_folder', type=str, default='./datasets/m2_annotations/image_info_test2014.json')
     
     # 验证集
     parser.add_argument('--val_features_path', type=str, default='./datasets/X101-features/X101_grid_feats_coco_trainval.hdf5')
