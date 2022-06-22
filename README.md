@@ -9,6 +9,15 @@ This repository contains the reference code for our paper [_RSTNet: Captioning w
 If you have any questions about our work, feel free to post issues on this github project. I will answer your questions and update code monthly.  
 If you are in hurry, please email me via [zhangxuying1004@gmail.com](zhangxuying1004@gmail.com).   
 If our work is heleful to you or gives some inspiration to you, please star this project and cite our paper. Thank you!  
+```
+@inproceedings{zhang2021rstnet,
+  title={RSTNet: Captioning with adaptive attention on visual and non-visual words},
+  author={Zhang, Xuying and Sun, Xiaoshuai and Luo, Yunpeng and Ji, Jiayi and Zhou, Yiyi and Wu, Yongjian and Huang, Feiyue and Ji, Rongrong},
+  booktitle={Proceedings of the IEEE/CVF conference on computer vision and pattern recognition},
+  pages={15465--15474},
+  year={2021}
+}
+```
 
 ## Environment setup
 Clone the repository and create the `m2release` conda environment using the `environment.yml` file:
