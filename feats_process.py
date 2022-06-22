@@ -75,12 +75,12 @@ def main(args):
 if __name__ == '__main__':
     
     parser = argparse.ArgumentParser(description='data process') 
-    parser.add_argument('--dir_to_raw_feats', type=str, default='./Datasets/X101-features/')
-    parser.add_argument('--dir_to_processed_feats', type=str, default='./Datasets/X101-features/')
+    parser.add_argument('--dir_to_raw_feats', type=str, default='./datasets/X101-features/')
+    parser.add_argument('--dir_to_processed_feats', type=str, default='./datasets/X101-features/')
     # trainval = train2014 + val2014，用于训练和线下测试，test = test2014，用于线上测试
     parser.add_argument('--data_split', type=str, default='trainval')   # trainval, test
     # test2015包含test2014，获取test2014时，先加载test2014索引再加载特征，image_info_test2014.json是保存test2014信息的文件
-    parser.add_argument('--test2014_info_path', type=str, default='./Datasets/m2_annotations/image_info_test2014.json') 
+    parser.add_argument('--test2014_info_path', type=str, default='./datasets/m2_annotations/image_info_test2014.json') 
     args = parser.parse_args()
         
     main(args)
