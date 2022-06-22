@@ -1,3 +1,5 @@
+# 线下测试：evaluating the performance of captioning model on the Karpathy test split of MS-COCO.
+
 import random
 from data import ImageDetectionsField, TextField, RawField
 from data import COCO, DataLoader
@@ -44,13 +46,13 @@ if __name__ == '__main__':
     start_time = time.time()
     device = torch.device('cuda')
 
-    parser = argparse.ArgumentParser(description='RSTNet')
+    parser = argparse.ArgumentParser(description='Relationship-Sensitive Transformer Network')
     parser.add_argument('--batch_size', type=int, default=10)
     parser.add_argument('--workers', type=int, default=4)
     parser.add_argument('--m', type=int, default=40)
 
-    parser.add_argument('--features_path', type=str, default='./Datasets/X101-features/X101-grid-coco_trainval.hdf5')
-    parser.add_argument('--annotation_folder', type=str, default='./Datasets/m2_annotations')
+    parser.add_argument('--features_path', type=str, default='./datasets/X101-features/X101-grid-coco_trainval.hdf5')
+    parser.add_argument('--annotation_folder', type=str, default='./datasets/m2_annotations')
     
     # the path of tested model and vocabulary
     parser.add_argument('--language_model_path', type=str, default='./saved_language_models/language_context.pth')
@@ -58,7 +60,7 @@ if __name__ == '__main__':
     parser.add_argument('--vocab_path', type=str, default='./vocab.pkl')
     args = parser.parse_args()
 
-    print('The Evaluation of RSTNet')
+    print('The Offline Evaluation of RSTNet')
 
     # Pipeline for image regions
     image_field = ImageDetectionsField(detections_path=args.features_path, max_detections=49, load_in_tmp=False)
@@ -67,22 +69,23 @@ if __name__ == '__main__':
     text_field = TextField(init_token='<bos>', eos_token='<eos>', lower=True, tokenize='spacy',
                            remove_punctuation=True, nopoints=False)
 
-    # Create the dataset
+    # 加载数据集
     dataset = COCO(image_field, text_field, 'coco/images/', args.annotation_folder, args.annotation_folder)
     _, _, test_dataset = dataset.splits
     text_field.vocab = pickle.load(open(args.vocab_path, 'rb'))
+    
+    dict_dataset_test = test_dataset.image_dictionary({'image': image_field, 'text': RawField()})
+    dict_dataloader_test = DataLoader(dict_dataset_test, batch_size=args.batch_size, num_workers=args.workers)
 
-    # Model and dataloaders
+    # 加载模型
     encoder = TransformerEncoder(3, 0, attention_module=ScaledDotProductAttention, attention_module_kwargs={'m': args.m})
     decoder = TransformerDecoderLayer(len(text_field.vocab), 54, 3, text_field.vocab.stoi['<pad>'], language_model_path=args.language_model_path)
     model = Transformer(text_field.vocab.stoi['<bos>'], encoder, decoder).to(device)
 
     data = torch.load(args.model_path)
     model.load_state_dict(data['state_dict'])
-
-    dict_dataset_test = test_dataset.image_dictionary({'image': image_field, 'text': RawField()})
-    dict_dataloader_test = DataLoader(dict_dataset_test, batch_size=args.batch_size, num_workers=args.workers)
-
+    
+    # 计算得分
     scores = predict_captions(model, dict_dataloader_test, text_field)
     print(scores)
     print('it costs {} s to test.'.format(time.time() - start_time))
