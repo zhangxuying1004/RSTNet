@@ -80,7 +80,7 @@ if __name__ == '__main__':
         '../test_online_models/x101/rstnet_x101_4.pth'
     ])
 
-    parser.add_argument('--dir_to_save_caps', type=str, default='./results/')    # test, val
+    parser.add_argument('--dir_to_save_caps', type=str, default='./results/')    # 文件保存路径
 
     args = parser.parse_args()
 
