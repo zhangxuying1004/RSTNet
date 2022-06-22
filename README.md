@@ -42,7 +42,7 @@ Run `python train_language.py` and `python train_transformer.py` in sequence usi
 | Argument | Possible values |
 |------|------|
 | `--exp_name` | Experiment name|
-| `--batch_size` | Batch size (default: 10) |
+| `--batch_size` | Batch size (default: 50) |
 | `--workers` | Number of workers, accelerate model training in the xe stage.|
 | `--head` | Number of heads (default: 8) |
 | `--resume_last` | If used, the training will be resumed from the last checkpoint. |
@@ -64,14 +64,11 @@ The figure below shows the changes of cider value during the training of rstnet.
 </p>
 
 ## Evaluation
-Run `python test_offline.py`  or `python test_online/main.py` to evaluate the performance of rstnet using the following arguments:
+### Offline Evaluation  
+Run `python test_offline.py` to evaluate the performance of rstnet on the Karpathy test split of MS COCO dataset.
 
-| Argument | Possible values |
-|------|------|
-| `--batch_size` | Batch size (default: 10) |
-| `--workers` | Number of workers (default: 0) |
-| `--features_path` | Path to visual features file (h5py) |
-| `--annotation_folder` | Path to m2_annotations |
+### Online Evaluation  
+Run `python test_online.py` to generate required files and evaluate the performance of rstnet on official test server of MS COCO dataset.  
 
 Note that, to reproduce the our reported results, you can also download our pretrained model files in the ```pretrained_models``` folder and put them into folder ```saved_language_models``` and folder ```saved_language_models``` repectively . The results of offline evaluation (Karpathy test split of MS COCO) are as follows：   
 <p align="center">
