@@ -82,7 +82,7 @@ The figure below shows the changes of cider value during the training of rstnet.
 Run `python test_offline.py` to evaluate the performance of rstnet on the Karpathy test split of MS COCO dataset.
 
 ### Online Evaluation  
-Run `python test_online.py` to generate required files and evaluate the performance of rstnet on official test server of MS COCO dataset.  
+Run `python test_online.py` to generate required files and evaluate the performance of rstnet on the official test server of MS COCO dataset.  
 
 Note that, to reproduce the our reported results, you can also download our pretrained model files in the ```pretrained_models``` folder and put them into folder ```saved_language_models``` and folder ```saved_language_models``` repectively . The results of offline evaluation (Karpathy test split of MS COCO) are as follows：   
 <p align="center">
