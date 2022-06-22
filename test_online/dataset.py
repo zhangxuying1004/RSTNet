@@ -1,26 +1,33 @@
-from torch.utils.data import Dataset, DataLoader
+from torch.utils.data import Dataset
 import json
 import h5py
 import numpy as np
 
 
-class COCO_Test(Dataset):
+class COCO_TestOnline(Dataset):
     def __init__(self, feat_path, ann_file, max_detections=49):
-        super(COCO_Test, self).__init__()
+        """
+        feat_path: COCO官方划分的训练集和验证集的特征路径
+        ann_file: 训练集或验证集的标注信息，用于获取image_id，进而检索出对应特征
+        """
+        super(COCO_TestOnline, self).__init__()
+        
+        # 读取图像信息
         with open(ann_file, 'r') as f:
-            self.info = json.load(f)
-        self.images = self.info['images']
-        self.feat_path = feat_path
-        self.f = h5py.File(feat_path, 'r')
+            self.images_info = json.load(f)['images']
+            
+        # 读取特征文件
+        self.f = h5py.File(feat_path, 'r')    
+        
+        # 记录特征数目
         self.max_detections = max_detections
 
     def __len__(self):
-        return len(self.images)
+        return len(self.images_info)
 
     def __getitem__(self, idx):
-        image_id = self.images[idx]['id']
+        image_id = self.images_info[idx]['id']
         precomp_data = self.f['%d_grids' % image_id][()]
-        # precomp_data = self.f['%d_features' % image_id][()]
 
         delta = self.max_detections - precomp_data.shape[0]
         if delta > 0:
@@ -29,30 +36,3 @@ class COCO_Test(Dataset):
             precomp_data = precomp_data[:self.max_detections]
 
         return int(image_id), precomp_data
-
-
-def test():
-    ann_file = '/home/DATA/m2_annotations/cocotest2014.json'
-    test_feat_path = '/home/zhangxuying/DataSet/COCO/test_feats/test_all_X101_align.hdf5'
-    # test_feat_path = '/home/zhangxuying/DataSet/COCO/test_feats/test_all_X152_align.hdf5'
-
-    # ann_file = '/home/DATA/m2_annotations/captions_val2014.json'
-    # val_feat_path = '/home/DATA/coco_all_X152_align.hdf5'
-    # val_feat_path = '/home/DATA/coco_grid_feats2.hdf5'
-
-    dataset = COCO_Test(feat_path=test_feat_path, ann_file=ann_file)
-    # dataset = COCO_Test(feat_path=val_feat_path, dataset_type='val')
-    print('data_num: ', len(dataset))
-
-    data_loader = DataLoader(
-        dataset,
-        batch_size=10
-    )
-
-    sample_image_id, sample_feats = next(iter(data_loader))
-    print(sample_image_id.size())
-    print(sample_feats.size())
-
-
-if __name__ == '__main__':
-    test()
