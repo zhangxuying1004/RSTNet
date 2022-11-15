@@ -8,7 +8,7 @@ This repository contains the reference code for our paper [_RSTNet: Captioning w
 ## Tips
 If you have any questions about our work, feel free to post issues on this github project. I will answer your questions and update code monthly.  
 If you are in hurry, please email me via [zhangxuying1004@gmail.com](zhangxuying1004@gmail.com).   
-If our work is heleful to you or gives some inspiration to you, please star this project and cite our paper. Thank you!  
+If our work is helpful to you or gives some inspiration to you, please star this project and cite our paper. Thank you!  
 ```
 @inproceedings{zhang2021rstnet,
   title={RSTNet: Captioning with adaptive attention on visual and non-visual words},
