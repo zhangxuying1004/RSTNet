@@ -29,7 +29,7 @@ conda activate m2release
 Then, download spacy data by executing the following command:   
 ```python -m spacy download en``` or ```python -m spacy download en_core_web_sm```.
 
-Besides, you need to create 5 new folders, namely ```Datasets```, ```save_language_models```, ```language_tensorboard_logs```,  ```save_transformer_models``` and ```transformer_tensorboard_logs``` in the root directory of this project.
+You also need to create 5 new folders, namely ```Datasets```, ```save_language_models```, ```language_tensorboard_logs```,  ```save_transformer_models``` and ```transformer_tensorboard_logs``` in the root directory of this project.
 
 ## Data preparation
 To run our code, you need to put annotations folder ```m2_annotations```, visual features folder ```X101-features``` for the COCO dataset into ```Datasets```.  
@@ -40,7 +40,7 @@ Then, visual features are computed with the code provided by [2]. To reproduce o
 ```
 python switch_datatype.py
 ```
-Besides, in order to solve the shape difference and match the feat shape with region feat shape (`50` regions), please execute the following command to reshape the visual to `49(7x7)` and save all visual features as a h5py file.
+In order to solve the shape difference and match the feat shape with region feat shape (`50` regions), please execute the following command to reshape the visual to `49(7x7)` and save all visual features as a h5py file.
 ```
 python feats_process.py
 ```
@@ -48,7 +48,7 @@ Note that you can also access to my processed offline image features [coco_grid_
 
 <!-- Note that, you can also use my processed offline image features [X101_grid_feats_coco_trainval.hdf5](https://pan.xunlei.com/s/VMyFV3OcrpOj7TdWkt5_amwiA1) with extraction code ```wsvg``` and my processed online image features [X101_grid_feats_coco_test.hdf5](https://pan.xunlei.com/s/VN-YFlVCAGDe_glAUaPkNOg2A1) with extraction code ```qzwm``` for convenience.  -->
 
-Besides, if you want to extract the grid-based features of your custom image dataset, you can refer to the project [grid-feats-vqa
+In addition, if you want to extract the grid-based features of your custom image dataset, you can refer to the project [grid-feats-vqa
 ](https://github.com/facebookresearch/grid-feats-vqa).
 
 ## Training procedure
