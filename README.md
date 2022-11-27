@@ -34,7 +34,7 @@ You also need to create 5 new folders, namely ```Datasets```, ```save_language_m
 ## Data preparation
 To run our code, you need to put annotations folder ```m2_annotations```, visual features folder ```X101-features``` for the COCO dataset into ```Datasets```.  
 
-Most annotations have been prepared by [1], please download [m2_annotations](https://drive.google.com/drive/folders/1tJnetunBkQ4Y5A3pq2P53yeJuGa4lX9e?usp=sharing) and put it into the root of this project.  
+Most annotations have been prepared by [1], please download [m2_annotations](https://drive.google.com/drive/folders/1tJnetunBkQ4Y5A3pq2P53yeJuGa4lX9e?usp=sharing) and put it into this root directory.  
 
 Visual features are computed with the code provided by [2]. To reproduce our result, please download the COCO features file such as ```X-101-features.tgz``` in [grid-feats-vqa
 ](https://github.com/facebookresearch/grid-feats-vqa) and rename the extracted folder as ```X101-features```. Considering that this feature file is huge, you can alternatively save the features as float16 for storage space saving by executing the following command:
