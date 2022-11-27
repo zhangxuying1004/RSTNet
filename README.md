@@ -36,8 +36,8 @@ To run our code, you need to put annotations folder ```m2_annotations```, visual
 
 First, most annotations have been prepared by [1], please download the files in [m2_annotations](https://drive.google.com/drive/folders/1tJnetunBkQ4Y5A3pq2P53yeJuGa4lX9e?usp=sharing) and put them into ```m2_annotations```.  
 
-Then, visual features are computed with the code provided by [2]. To reproduce our result, please download the COCO features file [X-101-features.tgz](https://dl.fbaipublicfiles.com/grid-feats-vqa/X-101/X-101-features.tgz) of [grid-feats-vqa
-](https://github.com/facebookresearch/grid-feats-vqa) and rename the extracted folder as ```X101-features```. Note that this visual features are huge, you can alternatively save the features as float16 for storage space saving by executing the following command:
+Then, visual features are computed with the code provided by [2]. To reproduce our result, please download the COCO features file such as ```X-101-features.tgz``` in [grid-feats-vqa
+](https://github.com/facebookresearch/grid-feats-vqa) and rename the extracted folder as ```X101-features```. Considering that this feature file is huge, you can alternatively save the features as float16 for storage space saving by executing the following command:
 ```
 python switch_datatype.py
 ```
@@ -49,7 +49,7 @@ Note that you can also access to my processed offline image features [coco_grid_
 
 <!-- Note that, you can also use my processed offline image features [X101_grid_feats_coco_trainval.hdf5](https://pan.xunlei.com/s/VMyFV3OcrpOj7TdWkt5_amwiA1) with extraction code ```wsvg``` and my processed online image features [X101_grid_feats_coco_test.hdf5](https://pan.xunlei.com/s/VN-YFlVCAGDe_glAUaPkNOg2A1) with extraction code ```qzwm``` for convenience.  -->
 
-In addition, if you want to extract the grid-based features of your custom image dataset, you can refer to the project [grid-feats-vqa
+In addition, if you want to extract the grid-based features of your custom image dataset, you can refer to the codes in project [grid-feats-vqa
 ](https://github.com/facebookresearch/grid-feats-vqa).
 
 ## Training procedure
