@@ -36,7 +36,8 @@ To run our code, you need to put annotations folder ```m2_annotations```, visual
 
 First, most annotations have been prepared by [1], please download the files in [m2_annotations](https://drive.google.com/drive/folders/1tJnetunBkQ4Y5A3pq2P53yeJuGa4lX9e?usp=sharing) and put them into ```m2_annotations```.  
 
-Then, visual features are computed with the code provided by [2]. To reproduce our result, please download the COCO features file [X-101-features.tgz](https://dl.fbaipublicfiles.com/grid-feats-vqa/X-101/X-101-features.tgz) and rename the extracted folder as ```X101-features```. Note that this visual features are huge, you can alternatively save the features as float16 for storage space saving by executing the following command:
+Then, visual features are computed with the code provided by [2]. To reproduce our result, please download the COCO features file [X-101-features.tgz](https://dl.fbaipublicfiles.com/grid-feats-vqa/X-101/X-101-features.tgz) of [grid-feats-vqa
+](https://github.com/facebookresearch/grid-feats-vqa) and rename the extracted folder as ```X101-features```. Note that this visual features are huge, you can alternatively save the features as float16 for storage space saving by executing the following command:
 ```
 python switch_datatype.py
 ```
