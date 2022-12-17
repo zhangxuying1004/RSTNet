@@ -45,7 +45,7 @@ In order to solve the shape difference and match the feat shape with region feat
 ```
 python feats_process.py
 ```
-Note that you can also access to my processed offline image features [coco_grid_feats](https://pan.baidu.com/s/1myelTYJE8a1HDZHkoccfIA) with the extraction code ```cvpr``` for convenience.  
+Note that you can also access to my processed offline image features [coco_grid_feats](https://pan.baidu.com/s/1myelTYJE8a1HDZHkoccfIA) in Baidu Netdisk with the extraction code ```cvpr``` for convenience.  
 
 <!-- Note that, you can also use my processed offline image features [X101_grid_feats_coco_trainval.hdf5](https://pan.xunlei.com/s/VMyFV3OcrpOj7TdWkt5_amwiA1) with extraction code ```wsvg``` and my processed online image features [X101_grid_feats_coco_test.hdf5](https://pan.xunlei.com/s/VN-YFlVCAGDe_glAUaPkNOg2A1) with extraction code ```qzwm``` for convenience.  -->
 
